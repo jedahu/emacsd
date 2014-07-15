@@ -1,13 +1,27 @@
 (require 'cl)
 (require 'package)
+(package-initialize)
+
+(require 'el-get)
+(require 'el-get-elpa)
 
 (add-to-list 'load-path "~/.emacs.d/conf/")
-
-(package-initialize)
 
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
                          ("marmalade" . "http://marmalade-repo.org/packages/")
                          ("melpa" . "http://melpa.milkbox.net/packages/")))
+
+(setq el-get-user-package-directory "~/.emacs.d/el-get-init/")
+
+(setq el-get-sources
+      '((:name goto-chg
+               :description "Goto the point of the most recent edit."
+               :type elpa
+               :features goto-chg)
+        (:name evil
+               :description "Vim!"
+               :type elpa
+               :features evil)))
 
 (defvar jdh:packages
   '(ahg
@@ -27,13 +41,7 @@
     smex
     zenburn-theme))
 
-(when (cl-find-if (lambda (p) (not (package-installed-p p))) jdh:packages)
-  (package-refresh-contents)
-  (dolist (p jdh:packages)
-    (when (not (package-installed-p p))
-      (package-install p))))
-
-(package-initialize)
+(el-get 'sync jdh:packages)
 
 (require 'jdh-commands)
 (require 'jdh-look-and-feel)
