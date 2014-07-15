@@ -4,9 +4,14 @@
 (require 'god-mode)
 (require 'diminish)
 
+(setq evil-motion-state-modes
+      (append evil-emacs-state-modes evil-motion-state-modes))
+(setq evil-emacs-state-modes nil)
+
 (global-evil-leader-mode)
 (evil-leader/set-key "x" 'smex)
 (evil-leader/set-key "z" 'smex-major-mode-commands)
+
 (define-key evil-insert-state-map "\C-n" 'completion-at-point)
 (define-key evil-ex-map "e " 'ido-find-file)
 (define-key evil-ex-map "b " 'ido-switch-buffer)
