@@ -1,3 +1,0 @@
-(:name jdh-sessions
-       :type no-op
-       :depends (nameses))

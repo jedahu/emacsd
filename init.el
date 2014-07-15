@@ -30,7 +30,17 @@
         (:name evil
                :description "Vim!"
                :type elpa
-               :features evil)))
+               :features evil)
+        (:name magit
+               :description "Git!"
+               :type elpa
+               :features magit)
+        (:name jdh-evil
+               :type no-op
+               :depends (evil evil-leader smex god-mode diminish))
+        (:name jdh-sessions
+               :type no-op
+               :depends (nameses))))
 
 (defvar jdh:packages
   '(ahg
