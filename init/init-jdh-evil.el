@@ -68,8 +68,6 @@
 
 (evil-define-key 'normal global-map "," 'evil-execute-in-god-state)
 
-(evil-mode t)
+(evil-mode 1)
 
 (diminish 'undo-tree-mode)
-
-(provide 'jdh-evil)

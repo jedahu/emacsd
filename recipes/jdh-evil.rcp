@@ -1,0 +1,3 @@
+(:name jdh-evil
+       :type no-op
+       :depends (evil evil-leader smex god-mode diminish))
