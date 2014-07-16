@@ -8,13 +8,18 @@
       (append evil-emacs-state-modes evil-motion-state-modes))
 (setq evil-emacs-state-modes nil)
 
-(global-evil-leader-mode)
-(evil-leader/set-key "x" 'smex)
-(evil-leader/set-key "z" 'smex-major-mode-commands)
+(setq evil-ex-complete-emacs-commands nil)
+
+(global-evil-leader-mode 1)
+(setq evil-leader/in-all-states t)
+(evil-leader/set-leader ",")
+(evil-leader/set-key "x" 'helm-M-x)
 
 (define-key evil-insert-state-map "\C-n" 'completion-at-point)
-(define-key evil-ex-map "e " 'ido-find-file)
-(define-key evil-ex-map "b " 'ido-switch-buffer)
+(define-key evil-ex-map "e " 'helm-find-files)
+(define-key evil-ex-map "b " 'helm-buffers-list)
+;(define-key evil-ex-map "w " 'helm-write-buffer)
+(define-key evil-ex-map "ha " 'helm-apropos)
 (define-key evil-normal-state-map [escape] 'keyboard-quit)
 (define-key evil-visual-state-map [escape] 'keyboard-quit)
 (define-key minibuffer-local-map [escape] 'abort-recursive-edit)
@@ -71,7 +76,25 @@
     (evil-god-state)))
   (evil-echo "Switched to God state for the next command ..."))
 
-(evil-define-key 'normal global-map "," 'evil-execute-in-god-state)
+(evil-leader/set-key "," 'evil-execute-in-god-state)
+(define-key evil-god-state-map [escape] 'keyboard-quit)
+
+(evil-define-command evil-delete-buffer-keep-window (buffer &optional bang)
+  (interactive "<b><!>")
+  (with-current-buffer (or buffer (current-buffer))
+    (when bang
+      (set-buffer-modified-p nil)
+      (dolist (process (process-list))
+        (when (eq (process-buffer process) (current-buffer))
+          (set-process-query-on-exit-flag process nil))))
+    (if (and (fboundp 'server-edit)
+             (boundp 'server-buffer-clients)
+             server-buffer-clients)
+        (server-edit)
+      (kill-buffer nil))))
+
+(evil-ex-define-cmd "bw" 'evil-delete-buffer-keep-window)
+(evil-ex-define-cmd "bu[ry]" 'bury-buffer)
 
 (evil-mode 1)
 

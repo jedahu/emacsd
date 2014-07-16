@@ -35,12 +35,20 @@
                :description "Git!"
                :type elpa
                :features magit)
+        (:name vbnet-mode
+               :descriptoin "VB.NET"
+               :type http
+               :url "http://www.emacswiki.org/emacs/download/vbnet-mode.el"
+               :features vbnet-mode)
         (:name jdh-evil
                :type no-op
                :depends (evil evil-leader smex god-mode diminish))
         (:name jdh-sessions
                :type no-op
-               :depends (nameses))))
+               :depends (desktop))
+        (:name jdh-matching
+               :type no-op
+               :depends (helm))))
 
 (defvar jdh:packages
   '(ahg
@@ -50,6 +58,8 @@
     evil-matchit
     evil-surround
     flycheck
+    helm
+    helm-ag
     magit
     omnisharp
     powerline
@@ -57,6 +67,8 @@
     powershell
     powershell-mode
     smex
+    solarized-theme
+    vbnet-mode
     zenburn-theme
     jdh-evil
     jdh-sessions))
@@ -74,5 +86,8 @@
 
 (require 'powershell)
 (require 'magit)
+(require 'helm)
+(require 'helm-ag)
+(require 'vbnet-mode)
 
 (server-start)
