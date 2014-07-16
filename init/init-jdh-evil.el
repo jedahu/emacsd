@@ -1,6 +1,5 @@
 (require 'evil)
 (require 'evil-leader)
-(require 'smex)
 (require 'god-mode)
 (require 'diminish)
 
@@ -20,6 +19,8 @@
 (define-key evil-ex-map "b " 'helm-buffers-list)
 ;(define-key evil-ex-map "w " 'helm-write-buffer)
 (define-key evil-ex-map "ha " 'helm-apropos)
+(define-key evil-ex-map "ag " 'helm-ag)
+(define-key evil-ex-map "dag " 'helm-do-ag)
 (define-key evil-normal-state-map [escape] 'keyboard-quit)
 (define-key evil-visual-state-map [escape] 'keyboard-quit)
 (define-key minibuffer-local-map [escape] 'abort-recursive-edit)
@@ -32,8 +33,6 @@
   "God state."
   :tag " <G> "
   :message "-- GOD MODE --"
-  :entry-hook (evil-god-start-hook)
-  :exit-hook (evil-god-stop-hook)
   :enable (god-local-mode)
   :input-method t
   :intercept-esc nil)
@@ -93,3 +92,4 @@
 (evil-mode 1)
 
 (diminish 'undo-tree-mode)
+(diminish 'god-local-mode)
