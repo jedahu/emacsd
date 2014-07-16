@@ -34,16 +34,9 @@
   :message "-- GOD MODE --"
   :entry-hook (evil-god-start-hook)
   :exit-hook (evil-god-stop-hook)
+  :enable (god-local-mode)
   :input-method t
   :intercept-esc nil)
-
-(defun evil-god-start-hook ()
-  (diminish 'god-local-mode)
-  (god-local-mode 1))
-
-(defun evil-god-stop-hook ()
-  (god-local-mode -1)
-  (diminish-undo 'god-local-mode))
 
 (defvar evil-execute-in-god-state-buffer nil)
 
@@ -59,7 +52,7 @@
               (evil-change-to-previous-state)
               (evil-exit-visual-state))
           (evil-change-to-previous-state))))
-    (setq evil-execute-in-got-state-buffer nil)))
+    (setq evil-execute-in-god-state-buffer nil)))
 
 (evil-define-command evil-execute-in-god-state ()
   "Execute the next command in God state."
@@ -77,6 +70,7 @@
   (evil-echo "Switched to God state for the next command ..."))
 
 (evil-leader/set-key "," 'evil-execute-in-god-state)
+(evil-leader/set-key "." 'evil-execute-in-emacs-state)
 (define-key evil-god-state-map [escape] 'keyboard-quit)
 
 (evil-define-command evil-delete-buffer-keep-window (buffer &optional bang)
