@@ -89,6 +89,18 @@
 (evil-ex-define-cmd "bw" 'evil-delete-buffer-keep-window)
 (evil-ex-define-cmd "bu[ry]" 'bury-buffer)
 
+(evil-define-command current-error ()
+  (interactive)
+  (next-error 0))
+
+(evil-ex-define-cmd "cn[ext]" 'next-error)
+(evil-ex-define-cmd "cp[rev]" 'previous-error)
+(evil-ex-define-cmd "cc" 'current-error)
+(evil-ex-define-cmd "cr[ewind]" 'first-error)
+
+(evil-ex-define-cmd "mak[e]" 'compile)
+(evil-ex-define-cmd "remak[e]" 'recompile)
+
 (evil-mode 1)
 
 (diminish 'undo-tree-mode)

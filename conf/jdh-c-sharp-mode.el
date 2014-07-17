@@ -1,4 +1,10 @@
 (require 'omnisharp)
+(require 'flymake)
+
+(defun jdh-csharp-mode-init ()
+  (flymake-mode -1))
+
+(add-hook 'csharp-mode-hook 'jdh-csharp-mode-init t)
 
 (add-hook 'csharp-mode-hook 'omnisharp-mode)
 (setq omnisharp-server-executable-path
@@ -56,5 +62,9 @@
   (kbd ",.") 'omnisharp-show-overloads-at-point)
 
 (setq omnisharp-auto-complete-want-documentation t)
+
+(defun omnisharp--fix-build-command-if-on-windows (command)
+  command)
+
 
 (provide 'jdh-c-sharp-mode)

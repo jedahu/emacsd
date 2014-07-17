@@ -3,4 +3,6 @@
 
 (electric-indent-mode t)
 
+(setq-default fill-column 80)
+
 (provide 'jdh-text)
