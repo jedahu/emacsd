@@ -42,7 +42,8 @@
            :features vbnet-mode)))
 
 (defvar jdh-packages
-  '((:name jdh-evil
+  '((:name jdh-core)
+    (:name jdh-evil
            :depends (evil evil-leader evil-indent-textobject evil-matchit
                           evil-surround god-mode diminish))
     (:name jdh-sessions
@@ -52,7 +53,7 @@
     (:name jdh-status-line
            :depends (powerline powerline-evil powershell powershell-mode))
     (:name jdh-dotnet
-           :depends (omnisharp vbnet-mode))
+           :depends (omnisharp vbnet-mode jdh-core))
     (:name jdh-c-common)
     (:name jdh-commands)
     (:name jdh-look-feel

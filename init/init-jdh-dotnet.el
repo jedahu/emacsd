@@ -8,8 +8,11 @@
 (add-hook 'csharp-mode-hook 'jdh-csharp-mode-init t)
 
 (add-hook 'csharp-mode-hook 'omnisharp-mode)
+
 (setq omnisharp-server-executable-path
-      "E:\\mystuff\\proj\\OmniSharpServer\\OmniSharp\\bin\\Debug\\OmniSharp.exe")
+      (case (jdh-system-sym)
+        ('TMWS107
+         "E:\\mystuff\\proj\\OmniSharpServer\\OmniSharp\\bin\\Debug\\OmniSharp.exe")))
 
 (evil-define-key 'insert omnisharp-mode-map
   (kbd "M-.") 'omnisharp-auto-complete)
