@@ -5,5 +5,3 @@
   (c-set-offset 'substatement-open 0))
 
 (add-hook 'c-mode-common-hook 'jdh:c-mode-common-init)
-
-(provide 'jdh-c-mode-common)

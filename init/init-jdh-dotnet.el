@@ -1,4 +1,5 @@
 (require 'omnisharp)
+(require 'vbnet-mode)
 (require 'flymake)
 
 (defun jdh-csharp-mode-init ()
@@ -65,6 +66,3 @@
 
 (defun omnisharp--fix-build-command-if-on-windows (command)
   command)
-
-
-(provide 'jdh-c-sharp-mode)
