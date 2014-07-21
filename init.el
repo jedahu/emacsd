@@ -59,7 +59,7 @@
     (:name jdh-look-feel
 	   :depends (solarized-theme zenburn-theme))
     (:name jdh-text
-           :depends (markdown-mode))
+           :depends (markdown-mode diminish))
     (:name jdh-behaviour)
     (:name jdh-git
 	   :depends (ahg))

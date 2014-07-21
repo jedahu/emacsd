@@ -13,6 +13,10 @@
 (setq evil-leader/in-all-states t)
 (evil-leader/set-leader ",")
 (evil-leader/set-key "x" 'helm-M-x)
+(evil-leader/set-key "ww" 'evil-window-next)
+(evil-leader/set-key "wW" 'evil-window-prev)
+(evil-leader/set-key "wp" 'evil-window-mru)
+(evil-leader/set-key "wo" 'delete-other-windows)
 
 (define-key evil-insert-state-map "\C-n" 'completion-at-point)
 (define-key evil-ex-map "e " 'helm-find-files)
@@ -100,6 +104,21 @@
 
 (evil-ex-define-cmd "mak[e]" 'compile)
 (evil-ex-define-cmd "remak[e]" 'recompile)
+
+(define-key evil-motion-state-map "\C-w" nil)
+(dolist (keys (list
+               (kbd "C-w")
+               (kbd "C-a")
+               (kbd "C-k")
+               [up]
+               [down]
+               [right]
+               [left]))
+  (define-key global-map keys nil)
+  (define-key evil-insert-state-map keys nil)
+  (define-key evil-normal-state-map keys nil)
+  (define-key evil-visual-state-map keys nil)
+  (define-key evil-god-state-map keys nil))
 
 (evil-mode 1)
 

@@ -6,7 +6,6 @@
   (flymake-mode -1))
 
 (add-hook 'csharp-mode-hook 'jdh-csharp-mode-init t)
-
 (add-hook 'csharp-mode-hook 'omnisharp-mode)
 
 (setq omnisharp-server-executable-path
