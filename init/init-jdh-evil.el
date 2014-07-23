@@ -12,35 +12,9 @@
 
 (global-evil-leader-mode 1)
 (setq evil-leader/in-all-states t)
-(evil-leader/set-leader ",")
 
 (evil-define-command jdh-helm-projectile-no-cache ()
   (helm-projectile t))
-
-(evil-leader/set-key "x" 'helm-M-x)
-(evil-leader/set-key "ww" 'evil-window-next)
-(evil-leader/set-key "wW" 'evil-window-prev)
-(evil-leader/set-key "wp" 'evil-window-mru)
-(evil-leader/set-key "wo" 'delete-other-windows)
-
-(define-key evil-insert-state-map "\C-n" 'completion-at-point)
-(define-key evil-ex-map "e " 'helm-find-files)
-(define-key evil-ex-map "b " 'helm-buffers-list)
-(define-key evil-ex-map "p " 'helm-projectile)
-(define-key evil-ex-map "pi " 'jdh-helm-projectile-no-cache)
-;(define-key evil-ex-map "w " 'helm-write-buffer)
-(define-key evil-ex-map "ha " 'helm-apropos)
-(define-key evil-ex-map "ag " 'helm-ag)
-(define-key evil-ex-map "dag " 'helm-do-ag)
-(define-key evil-ex-map "pag " 'helm-projectile-ag)
-(define-key evil-ex-map "sw " 'projectile-switch-project)
-(define-key evil-normal-state-map [escape] 'keyboard-quit)
-(define-key evil-visual-state-map [escape] 'keyboard-quit)
-(define-key minibuffer-local-map [escape] 'abort-recursive-edit)
-(define-key minibuffer-local-ns-map [escape] 'abort-recursive-edit)
-(define-key minibuffer-local-completion-map [escape] 'abort-recursive-edit)
-(define-key minibuffer-local-must-match-map [escape] 'abort-recursive-edit)
-(define-key minibuffer-local-isearch-map [escape] 'abort-recursive-edit)
 
 (evil-define-state god
   "God state."
@@ -99,22 +73,65 @@
         (server-edit)
       (kill-buffer nil))))
 
-(evil-ex-define-cmd "bw" 'evil-delete-buffer-keep-window)
-(evil-ex-define-cmd "bu[ry]" 'bury-buffer)
-
 (evil-define-command current-error ()
   (interactive)
   (next-error 0))
 
+(evil-leader/set-leader ",")
+
+(evil-leader/set-key "x" 'helm-M-x)
+(evil-leader/set-key "ww" 'evil-window-next)
+(evil-leader/set-key "wW" 'evil-window-prev)
+(evil-leader/set-key "wp" 'evil-window-mru)
+(evil-leader/set-key "wo" 'delete-other-windows)
+
+;; Files
+(define-key evil-ex-map "e " 'helm-find-files)
+
+;; Buffers
+(evil-ex-define-cmd "bw" 'evil-delete-buffer-keep-window)
+(evil-ex-define-cmd "bu[ry]" 'bury-buffer)
+(define-key evil-ex-map "b " 'helm-buffers-list)
+
+;; Errors
 (evil-ex-define-cmd "cn[ext]" 'next-error)
 (evil-ex-define-cmd "cp[rev]" 'previous-error)
 (evil-ex-define-cmd "cc" 'current-error)
 (evil-ex-define-cmd "cr[ewind]" 'first-error)
 
+;; Building
 (evil-ex-define-cmd "mak[e]" 'compile)
 (evil-ex-define-cmd "remak[e]" 'recompile)
 
+;; Projects
 (evil-ex-define-cmd "sw[itch-project]" 'projectile-switch-project)
+(evil-ex-define-cmd "p[roject-file]" 'helm-projectile)
+(evil-ex-define-cmd "P[roject-file]" 'jdh-helm-projectile-no-cache)
+(define-key evil-ex-map "sw " 'projectile-switch-project)
+(define-key evil-ex-map "p " 'helm-projectile)
+(define-key evil-ex-map "P " 'jdh-helm-projectile-no-cache)
+
+;; Ag
+(evil-ex-define-cmd "ag" 'helm-ag)
+(evil-ex-define-cmd "agi[nteractive]" 'helm-do-ag)
+(evil-ex-define-cmd "agp[roject]" 'helm-projectile-ag)
+(define-key evil-ex-map "ag " 'helm-ag)
+(define-key evil-ex-map "agi " 'helm-do-ag)
+(define-key evil-ex-map "agp " 'helm-projectile-ag)
+
+;; Help
+(evil-ex-define-cmd "ap[ropos]" 'helm-apropos)
+(define-key evil-ex-map "ap " 'helm-apropos)
+
+(define-key evil-insert-state-map "\C-n" 'completion-at-point)
+;(define-key evil-ex-map "w " 'helm-write-buffer)
+(define-key evil-normal-state-map [escape] 'keyboard-quit)
+(define-key evil-visual-state-map [escape] 'keyboard-quit)
+(define-key minibuffer-local-map [escape] 'abort-recursive-edit)
+(define-key minibuffer-local-ns-map [escape] 'abort-recursive-edit)
+(define-key minibuffer-local-completion-map [escape] 'abort-recursive-edit)
+(define-key minibuffer-local-must-match-map [escape] 'abort-recursive-edit)
+(define-key minibuffer-local-isearch-map [escape] 'abort-recursive-edit)
 
 (define-key evil-motion-state-map "\C-w" nil)
 (dolist (keys (list

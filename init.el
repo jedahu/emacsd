@@ -9,7 +9,7 @@
 (package-initialize)
 
 (unless (package-installed-p 'el-get)
-  (make-directory "~/.emacs.d/el-get")
+  ;; (make-directory "~/.emacs.d/el-get")
   (package-refresh-contents)
   (package-install 'el-get))
 
@@ -46,12 +46,9 @@
     (:name jdh-evil
            :depends (evil evil-leader evil-indent-textobject evil-matchit
                           evil-surround god-mode diminish jdh-project))
-    (:name jdh-sessions
-           :depends (desktop))
+    (:name jdh-sessions)
     (:name jdh-matching
            :depends (helm))
-    (:name jdh-status-line
-           :depends (powerline powerline-evil powershell powershell-mode))
     (:name jdh-dotnet
            :depends (omnisharp vbnet-mode jdh-core))
     (:name jdh-c-common)
@@ -66,7 +63,7 @@
     (:name jdh-project
            :depends (projectile helm-ag))
     (:name jdh-misc
-           :depends (ahg flycheck magit))))
+           :depends (ahg flycheck magit powershell powershell-mode))))
 
 (setq el-get-sources
       (append
