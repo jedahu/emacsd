@@ -2,6 +2,7 @@
 (require 'evil-leader)
 (require 'god-mode)
 (require 'diminish)
+(require 'projectile)
 
 (setq evil-motion-state-modes
       (append evil-emacs-state-modes evil-motion-state-modes))
@@ -12,6 +13,10 @@
 (global-evil-leader-mode 1)
 (setq evil-leader/in-all-states t)
 (evil-leader/set-leader ",")
+
+(evil-define-command jdh-helm-projectile-no-cache ()
+  (helm-projectile t))
+
 (evil-leader/set-key "x" 'helm-M-x)
 (evil-leader/set-key "ww" 'evil-window-next)
 (evil-leader/set-key "wW" 'evil-window-prev)
@@ -21,10 +26,14 @@
 (define-key evil-insert-state-map "\C-n" 'completion-at-point)
 (define-key evil-ex-map "e " 'helm-find-files)
 (define-key evil-ex-map "b " 'helm-buffers-list)
+(define-key evil-ex-map "p " 'helm-projectile)
+(define-key evil-ex-map "pi " 'jdh-helm-projectile-no-cache)
 ;(define-key evil-ex-map "w " 'helm-write-buffer)
 (define-key evil-ex-map "ha " 'helm-apropos)
 (define-key evil-ex-map "ag " 'helm-ag)
 (define-key evil-ex-map "dag " 'helm-do-ag)
+(define-key evil-ex-map "pag " 'helm-projectile-ag)
+(define-key evil-ex-map "sw " 'projectile-switch-project)
 (define-key evil-normal-state-map [escape] 'keyboard-quit)
 (define-key evil-visual-state-map [escape] 'keyboard-quit)
 (define-key minibuffer-local-map [escape] 'abort-recursive-edit)
@@ -104,6 +113,8 @@
 
 (evil-ex-define-cmd "mak[e]" 'compile)
 (evil-ex-define-cmd "remak[e]" 'recompile)
+
+(evil-ex-define-cmd "sw[itch-project]" 'projectile-switch-project)
 
 (define-key evil-motion-state-map "\C-w" nil)
 (dolist (keys (list

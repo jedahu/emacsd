@@ -45,7 +45,7 @@
   '((:name jdh-core)
     (:name jdh-evil
            :depends (evil evil-leader evil-indent-textobject evil-matchit
-                          evil-surround god-mode diminish))
+                          evil-surround god-mode diminish jdh-project))
     (:name jdh-sessions
            :depends (desktop))
     (:name jdh-matching
@@ -57,14 +57,16 @@
     (:name jdh-c-common)
     (:name jdh-commands)
     (:name jdh-look-feel
-	   :depends (solarized-theme zenburn-theme))
+           :depends (solarized-theme zenburn-theme))
     (:name jdh-text
            :depends (markdown-mode diminish))
     (:name jdh-behaviour)
     (:name jdh-git
-	   :depends (ahg))
+           :depends (ahg))
+    (:name jdh-project
+           :depends (projectile helm-ag))
     (:name jdh-misc
-	   :depends (ahg flycheck helm-ag magit))))
+           :depends (ahg flycheck magit))))
 
 (setq el-get-sources
       (append
