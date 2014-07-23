@@ -1,8 +1,11 @@
 \#*\#
 .*
 *~
+*.cache
 *.elc
 el-get/
 elpa/
 server/
 ac-comphist.dat
+abbrev_defs
+projectile-bookmarks.eld
