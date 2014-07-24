@@ -84,6 +84,10 @@
 (evil-leader/set-key "wW" 'evil-window-prev)
 (evil-leader/set-key "wp" 'evil-window-mru)
 (evil-leader/set-key "wo" 'delete-other-windows)
+(evil-leader/set-key "cn" 'next-error)
+(evil-leader/set-key "cp" 'previous-error)
+(evil-leader/set-key "cc" 'current-error)
+(evil-leader/set-key "cr" 'first-error)
 
 ;; Files
 (define-key evil-ex-map "e " 'helm-find-files)
@@ -92,12 +96,6 @@
 (evil-ex-define-cmd "bw" 'evil-delete-buffer-keep-window)
 (evil-ex-define-cmd "bu[ry]" 'bury-buffer)
 (define-key evil-ex-map "b " 'helm-buffers-list)
-
-;; Errors
-(evil-ex-define-cmd "cn[ext]" 'next-error)
-(evil-ex-define-cmd "cp[rev]" 'previous-error)
-(evil-ex-define-cmd "cc" 'current-error)
-(evil-ex-define-cmd "cr[ewind]" 'first-error)
 
 ;; Building
 (evil-ex-define-cmd "mak[e]" 'compile)
@@ -150,5 +148,8 @@
 
 (evil-mode 1)
 
-(diminish 'undo-tree-mode)
+(defun jdh-diminish-undo-tree-mode ()
+  (diminish 'undo-tree-mode))
+
+(add-hook 'undo-tree-mode-hook 'jdh-diminish-undo-tree-mode)
 (diminish 'god-local-mode)

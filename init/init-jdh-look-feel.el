@@ -1,3 +1,5 @@
+(require 'zenburn-theme)
+
 (load-theme 'zenburn t)
 
 (setq inhibit-splash-screen t)
@@ -15,3 +17,5 @@
 (setq mouse-wheel-progressive-speed t)
 (setq mouse-wheel-follow-mouse t)
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
+
+(setq visible-bell t)

@@ -1,4 +1,7 @@
 ;; jedahu@gmail.com
+(when (string-equal "TMWS107" (system-name))
+  (setenv "HOME" "C:/Users/jhughes"))
+
 (require 'cl)
 (require 'package)
 
@@ -13,14 +16,12 @@
   (package-refresh-contents)
   (package-install 'el-get))
 
-
 (require 'el-get)
 (require 'el-get-elpa)
 
-(add-to-list 'load-path "~/.emacs.d/conf/")
-
 (setq el-get-user-package-directory "~/.emacs.d/init/")
 (add-to-list 'el-get-recipe-path "~/.emacs.d/recipes")
+;; (setq-default el-get-is-lazy t)
 
 (defvar jdh-package-overrides
   '((:name goto-chg
@@ -39,7 +40,10 @@
            :descriptoin "VB.NET"
            :type http
            :url "http://www.emacswiki.org/emacs/download/vbnet-mode.el"
-           :features vbnet-mode)))
+           :features vbnet-mode)
+    (:name htmlize
+           :description "HTMLize"
+           :type elpa)))
 
 (defvar jdh-packages
   '((:name jdh-core)
@@ -62,6 +66,8 @@
            :depends (ahg))
     (:name jdh-project
            :depends (projectile helm-ag))
+    (:name jdh-blog
+           :depends (o-blog))
     (:name jdh-misc
            :depends (ahg flycheck magit powershell powershell-mode))))
 
