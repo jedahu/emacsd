@@ -1,4 +1,5 @@
 (require 'dired-x)
+(require 'ffap)
 
 (global-auto-revert-mode t)
 

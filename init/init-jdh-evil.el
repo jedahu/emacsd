@@ -91,6 +91,7 @@
 
 ;; Files
 (define-key evil-ex-map "e " 'helm-find-files)
+;; (define-key evil-ex-completion-map (kbd "SPC") #'evil-ex-completion)
 
 ;; Buffers
 (evil-ex-define-cmd "bw" 'evil-delete-buffer-keep-window)
@@ -121,6 +122,7 @@
 (evil-ex-define-cmd "ap[ropos]" 'helm-apropos)
 (define-key evil-ex-map "ap " 'helm-apropos)
 
+(define-key evil-insert-state-map [remap newline] 'evil-ret-and-indent)
 (define-key evil-insert-state-map "\C-n" 'completion-at-point)
 ;(define-key evil-ex-map "w " 'helm-write-buffer)
 (define-key evil-normal-state-map [escape] 'keyboard-quit)

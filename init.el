@@ -43,18 +43,33 @@
            :features vbnet-mode)
     (:name htmlize
            :description "HTMLize"
-           :type elpa)))
+           :type elpa)
+    (:name pos-tip
+           :description "pos-tip"
+           :type elpa)
+    (:name evil-scout
+           :description "Alternative <leader>"
+           :type github
+           :pkgname "tarleb/evil-scout"
+           :features evil-scout)
+    (:name evil-rebellion
+           :description "Evil Rebellion!"
+           :depends (evil-scout)
+           :type github
+           :pkgname "tarleb/evil-rebellion"
+           :features evil-rebellion)))
 
 (defvar jdh-packages
   '((:name jdh-core)
     (:name jdh-evil
            :depends (evil evil-leader evil-indent-textobject evil-matchit
-                          evil-surround god-mode diminish jdh-project))
+                          evil-surround evil-rebellion god-mode diminish
+                          jdh-project))
     (:name jdh-sessions)
     (:name jdh-matching
            :depends (helm))
     (:name jdh-dotnet
-           :depends (omnisharp vbnet-mode jdh-core))
+           :depends (omnisharp vbnet-mode fsharp-mode jdh-core))
     (:name jdh-c-common)
     (:name jdh-commands)
     (:name jdh-look-feel
@@ -68,6 +83,7 @@
            :depends (projectile helm-ag))
     (:name jdh-blog
            :depends (o-blog))
+    (:name jdh-eshell)
     (:name jdh-misc
            :depends (ahg flycheck magit powershell powershell-mode))))
 
@@ -81,5 +97,8 @@
   (mapcar (lambda (p) (plist-get p :name)) jdh-packages))
 
 (el-get 'sync (jdh-package-symbols))
+
+(when-let (name (getenv "EMACS_SERVER"))
+  (setq-default server-name name))
 
 (server-start)
