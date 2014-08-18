@@ -7,3 +7,5 @@
 (defun jdh-find-init-file ()
   (interactive)
   (find-file user-init-file))
+
+(provide 'init-jdh-commands)

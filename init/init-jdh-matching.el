@@ -1,6 +1,9 @@
-(require 'helm)
+(req-package helm
+  :defer t
+  :config
+  (setq-default completion-at-point-functions nil))
 
-(setq-default completion-at-point-functions nil)
+(provide 'init-jdh-matching)
 
 ;(icy-mode 1)
 

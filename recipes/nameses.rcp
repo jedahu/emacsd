@@ -1,7 +1,0 @@
-(:name nameses
-       :description "Nameses enables named sessions."
-       :type git
-       :url "https://gist.github.com/jannisteunissen/8960595"
-       :features nameses
-       :depends (desktop)
-       :load-path ("."))
