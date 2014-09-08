@@ -1,5 +1,6 @@
 (req-package helm
   :defer t
+  :require (helm-ls-git helm-ls-hg)
   :config
   (setq-default completion-at-point-functions nil))
 

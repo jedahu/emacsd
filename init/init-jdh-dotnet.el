@@ -7,18 +7,22 @@
 
     (add-hook 'fsharp-mode-hook 'jdh-fsharp-mode-init)))
 
-(req-package vbnet-mode)
+(req-package vbnet-mode
+  :defer t
+  :commands vbnet-mode
+  :init
+  (add-to-list 'auto-mode-alist '("\\.vb\\$" . vbnet-mode)))
 
 (req-package csharp-mode
   :defer t
-  :require (omnisharp)
+  :require (omnisharp cc-mode)
   :config
   (progn
     (defun jdh-csharp-mode-init ()
       (flymake-mode -1))
 
     (add-hook 'csharp-mode-hook 'jdh-csharp-mode-init t)
-    (add-hook 'csharp-mode-hook 'omnisharp-mode)
+    ;;(add-hook 'csharp-mode-hook 'omnisharp-mode)
 
     (setq omnisharp-server-executable-path
           (case (jdh-system-sym)

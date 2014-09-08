@@ -1,6 +1,14 @@
 ;; jedahu@gmail.com
+(defvar jdh-emacsd (file-name-as-directory (expand-file-name "~/.emacs.d")))
+
 (when (string-equal "TMWS107" (system-name))
-  (setenv "HOME" "C:/Users/jhughes"))
+  (setenv "HOME" "C:/Users/jhughes")
+  (setq-default jdh-emacsd
+                (file-name-as-directory
+                 (expand-file-name
+                  (concat
+                   (file-name-as-directory (getenv "APPDATA"))
+                   ".emacs.d")))))
 
 (require 'cl)
 (require 'package)
@@ -19,7 +27,8 @@
 
 (require 'req-package)
 
-(add-to-list 'load-path "C:/users/jhughes/appdata/roaming/.emacs.d/init/")
+(add-to-list 'load-path (concat jdh-emacsd "init"))
+(add-to-list 'load-path (concat jdh-emacsd "pkgs/vbnet-mode"))
 
 ;;(setq el-get-user-package-directory "~/.emacs.d/init/")
 ;;(add-to-list 'el-get-recipe-path "~/.emacs.d/recipes")
@@ -74,6 +83,7 @@
 (require 'init-jdh-text)
 (require 'init-jdh-behaviour)
 (require 'init-jdh-hg)
+(require 'init-jdh-git)
 (require 'init-jdh-project)
 (require 'init-jdh-eshell)
 (req-package magit)
@@ -122,8 +132,9 @@
 
 ;;(el-get 'sync (jdh-package-symbols))
 
-(when-let (name (getenv "EMACS_SERVER"))
-  (setq-default server-name name))
+(let ((name (getenv "EMACS_SERVER")))
+  (when name
+    (setq-default server-name name)))
 
 ;;(set-file-modes (expand-file-name "~/.emacs.d/server") #o700)
 

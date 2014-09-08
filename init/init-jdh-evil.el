@@ -85,9 +85,35 @@
     (evil-leader/set-key "cp" 'previous-error)
     (evil-leader/set-key "cc" 'current-error)
     (evil-leader/set-key "cr" 'first-error)
+    (evil-leader/set-key "dn" 'diff-hunk-next)
+    (evil-leader/set-key "dp" 'diff-hunk-prev)
+    (evil-leader/set-key "dN" 'diff-file-next)
+    (evil-leader/set-key "dP" 'diff-file-prev)
+    (evil-leader/set-key "da" 'diff-apply-hunk)
+    (evil-leader/set-key "dA"
+      (lambda ()
+        (interactive)
+        (flet ((diff-hunk-next ()))
+            (diff-apply-hunk))
+        (diff-hunk-kill)))
+    (evil-leader/set-key "dr"
+      (lambda ()
+        (interactive)
+        (diff-apply-hunk t)))
+    (evil-leader/set-key "dR"
+      (lambda ()
+        (interactive)
+        (flet ((diff-hunk-next ()))
+          (diff-apply-hunk t))
+        (diff-hunk-kill)))
+    (evil-leader/set-key "dk" 'diff-hunk-kill)
+    (evil-leader/set-key "dK" 'diff-file-kill)
+    (evil-leader/set-key "dh" 'diff-refine-hunk)
+    (evil-leader/set-key "ds" 'diff-goto-source)
 
     ;; Files
-    (define-key evil-ex-map "e " 'helm-find-files)
+    (define-key evil-ex-map "e " 'helm-browse-project)
+    (define-key evil-ex-map "ef " 'helm-find-files)
     ;; (define-key evil-ex-completion-map (kbd "SPC") #'evil-ex-completion)
 
     ;; Buffers
