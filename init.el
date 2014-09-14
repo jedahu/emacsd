@@ -86,6 +86,7 @@
 (require 'init-jdh-git)
 (require 'init-jdh-project)
 (require 'init-jdh-eshell)
+(require 'init-jdh-haskell)
 (req-package magit)
 (req-package powershell)
 (req-package powershell-mode)
