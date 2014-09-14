@@ -1,0 +1,3 @@
+[submodule "pkgs/evil-rebellion"]
+	path = pkgs/evil-rebellion
+	url = git@github.com:jedahu/evil-rebellion.git
