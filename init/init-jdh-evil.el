@@ -46,7 +46,7 @@
                             (let ((mrk (mark))
                                   (pnt (point)))
                               (evil-god-state)
-                              (set-mar mrk)
+                              (set-mark mrk)
                               (goto-char pnt)))
                            (t
                              (evil-god-state)))
