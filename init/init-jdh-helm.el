@@ -1,9 +1,9 @@
 (req-package helm
   :defer t
-  :require (evil evil-leader)
+  :require (evil evil-scout)
   :init
   (progn
-    (evil-leader/set-key "x" 'helm-M-x)
+    (define-global-leader "x" 'helm-M-x)
     (define-key evil-ex-map "b " 'helm-buffers-list)
     (evil-ex-define-cmd "ag" 'helm-ag)
     (evil-ex-define-cmd "agi[nteractive]" 'helm-do-ag)

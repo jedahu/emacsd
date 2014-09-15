@@ -1,6 +1,6 @@
 (req-package projectile
   :defer t
-  :require (helm-ag evil evil-leader)
+  :require (helm-ag evil)
   :commands (projectile-switch-project helm-projectile)
   :init
   (progn

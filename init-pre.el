@@ -43,4 +43,9 @@
   (interactive)
   (find-file user-init-file))
 
+(defun jdh-make-keymap (alist)
+  (let ((map (make-sparse-keymap)))
+    (dolist (kv alist) (apply #'define-key map kv))
+    map))
+
 (provide 'init-pre)
