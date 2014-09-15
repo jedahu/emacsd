@@ -39,4 +39,8 @@
       (setq-default server-name name)))
   (server-start))
 
+(defun jdh-find-init-file ()
+  (interactive)
+  (find-file user-init-file))
+
 (provide 'init-pre)
