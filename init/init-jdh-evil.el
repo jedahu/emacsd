@@ -36,18 +36,6 @@
     (evil-ex-define-cmd "mak[e]" 'compile)
     (evil-ex-define-cmd "remak[e]" 'recompile)
 
-    ;; Projects
-    ;(evil-ex-define-cmd "sw[itch-project]" 'projectile-switch-project)
-    ;(evil-ex-define-cmd "p[roject-file]" 'helm-projectile)
-    ;(evil-ex-define-cmd "P[roject-file]" 'jdh-helm-projectile-no-cache)
-    ;(define-key evil-ex-map "sw " 'projectile-switch-project)
-    ;(define-key evil-ex-map "p " 'helm-projectile)
-    ;(define-key evil-ex-map "P " 'jdh-helm-projectile-no-cache)
-
-    ;; Ag
-    ;(evil-ex-define-cmd "agp[roject]" 'helm-projectile-ag)
-    ;(define-key evil-ex-map "agp " 'helm-projectile-ag)
-
     ;; Help
 
     (define-key evil-insert-state-map [remap newline] 'evil-ret-and-indent)
