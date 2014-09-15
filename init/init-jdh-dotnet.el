@@ -7,6 +7,9 @@
 
     (add-hook 'fsharp-mode-hook 'jdh-fsharp-mode-init)))
 
+(req-package powershell)
+(req-package powershell-mode)
+
 (req-package vbnet-mode
   :defer t
   :commands vbnet-mode
