@@ -10,6 +10,7 @@
    ("melpa" . "http://melpa.milkbox.net/packages/")))
 
 (jdh-add-subdirs-to-load-path (jdh-emacsd-dir "pkgs"))
+(load-file (concat (file-name-directory load-file-name) "pkgs/extra-paths.el"))
 
 (require 'req-package)
 
