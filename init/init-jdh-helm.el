@@ -19,5 +19,8 @@
     (req-package-force helm-ls-git :demand t)
     (req-package-force helm-ls-hg :demand t)))
 
+(req-package helm-ag
+  :defer t
+  :require (helm))
 
 (provide 'init-jdh-matching)
