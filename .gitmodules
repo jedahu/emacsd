@@ -3,4 +3,4 @@
 	url = git@github.com:jedahu/evil-rebellion.git
 [submodule "pkgs/evil-scout"]
 	path = pkgs/evil-scout
-	url = git@github.com:tarleb/evil-scout.git
+	url = git@github.com:jedahu/evil-scout.git
