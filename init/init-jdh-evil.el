@@ -94,40 +94,6 @@
            ("cr" first-error)))
       (define-global-leader (first kv) (second kv)))))
 
-(req-package diff-mode
-  :defer t
-  :require (evil-scout)
-  :config
-  (progn
-    (defvar evil-local-leader-diff-mode-map
-      (jdh-make-keymap '(("n" diff-hunk-next)
-                         ("p" diff-hunk-prev)
-                         ("N" diff-file-next)
-                         ("P" diff-file-prev)
-                         ("a" diff-apply-hunk)
-                         ("A"
-                          (lambda ()
-                            (interactive)
-                            (flet ((diff-hunk-next ()))
-                              (diff-apply-hunk))
-                            (diff-hunk-kill)))
-                         ("r"
-                           (lambda ()
-                             (interactive)
-                             (diff-apply-hunk t)))
-                         ("R"
-                           (lambda ()
-                             (interactive)
-                             (flet ((diff-hunk-next ()))
-                               (diff-apply-hunk t))
-                             (diff-hunk-kill)))
-                         ("k" diff-hunk-kill)
-                         ("K" diff-file-kill)
-                         ("h" diff-refine-hunk)
-                         ("s" diff-goto-source))))
-    (define-leader-key 'local-leader diff-mode-map
-      nil evil-local-leader-diff-mode-map)))
-
 (req-package evil-god-state
   :defer t
   :require (evil evil-scout)
