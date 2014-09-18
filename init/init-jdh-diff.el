@@ -1,6 +1,6 @@
 (req-package diff-mode
   :defer t
-  :require (evil-scout)
+  :require (evil evil-scout)
   :commands (diff-hunk-next diff-hunk-prev diff-file-next diff-file-prev
              diff-goto-source diff-apply-hunk diff-hunk-kill diff-file-kill
              diff-refine-hunk)
