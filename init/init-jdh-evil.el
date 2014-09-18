@@ -72,8 +72,12 @@
   :require (evil)
   :config
   (progn
-    (setq-default evil-scout-keys-alist '((leader . "<SPC>")
-                                          (local-leader . "\\")))
+    (setq-default evil-scout-keys-alist
+		  `((leader "<SPC>" ,evil-normal-state-map ,evil-visual-state-map)
+		    (local-leader "\\" normal visual insert)))
+    (evil-define-key 'insert global-map "\\\\" 'self-insert-command)
+    (define-key minibuffer-local-map "\\" 'self-insert-command)
+    (define-key evil-ex-completion-map "\\" 'self-insert-command)
 
     (evil-define-command current-error ()
       (interactive)
