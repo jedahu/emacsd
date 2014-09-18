@@ -15,7 +15,7 @@
     )
   :config
   (progn
-    (steq-default projectile-completion-system 'helm)
+    (setq-default projectile-completion-system 'helm)
     (setq-default projectile-switch-project-action 'projectile-dired)
     (setq-default projectile-indexing-method 'alien)
     (setq-default projectile-enable-caching t)
