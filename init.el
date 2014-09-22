@@ -16,6 +16,7 @@
 (require 'req-package)
 
 (req-package-force load-dir :init (load-dir-one (jdh-emacsd-dir "init")))
+(require 'init-jdh-project)
 
 (req-package-finish)
 

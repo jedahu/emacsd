@@ -17,7 +17,13 @@
   (progn
     (setq-default completion-at-point-functions nil)
     (req-package-force helm-ls-git :demand t)
-    (req-package-force helm-ls-hg :demand t)))
+    (req-package-force helm-ls-hg :demand t)
+    (define-key helm-map "\\mm" 'helm-toggle-visible-mark)
+    (define-key helm-map "\\ma" 'helm-mark-all)
+    (define-key helm-map "\\mA" 'helm-unmark-all)
+    (define-key helm-map "\\mn" 'helm-next-visible-mark)
+    (define-key helm-map "\\mN" 'helm-prev-visible-mark)
+    ))
 
 (req-package helm-ag
   :defer t

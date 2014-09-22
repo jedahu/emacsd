@@ -1,7 +1,10 @@
-(req-package projectile
+(req-package helm-ag
+  :require (helm))
+
+(req-package helm-projectile
   :defer t
-  :require (helm-ag helm-projectile evil)
-  :commands (projectile-switch-project helm-projectile)
+  :require (helm-ag projectile evil)
+  :commands (helm-projectile-switch-project helm-projectile helm-projectile-ag)
   :init
   (progn
     (evil-ex-define-cmd "sw[itch-project]" 'helm-projectile-switch-project)

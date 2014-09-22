@@ -1,6 +1,12 @@
 (req-package ahg
   :commands (hg-review hg-revstat ahg-status)
   :require (evil)
+  :init
+  (progn
+    (evil-ex-define-cmd "hgstat" 'hg-stat)
+    (evil-ex-define-cmd "hgdiff" 'hg-diff)
+    (evil-ex-define-cmd "hgrevstat" 'hg-revstat)
+    (evil-ex-define-cmd "hgreview" 'hg-review))
   :config
   (progn
     (setq ahg-auto-refresh-status-buffer t)
@@ -18,6 +24,16 @@
       (evil-ex-define-cmd "fbid" 'jdh-insert-fogbugz-id-prefix))
 
     (add-hook 'log-edit-mode-hook 'jdh-log-edit-mode-hook)
+
+    (defun hg-stat ()
+      (interactive)
+      (shell-command "hg diff --stat" "*hg stat*"))
+
+    (defun hg-diff ()
+      (interactive)
+      (shell-command "hg diff" "*hg diff*")
+      (with-current-buffer "*hg diff*"
+        (diff-mode)))
 
     (defun hg-revstat ()
       (interactive)
