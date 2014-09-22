@@ -18,6 +18,8 @@
     (setq-default completion-at-point-functions nil)
     (req-package-force helm-ls-git :demand t)
     (req-package-force helm-ls-hg :demand t)
+    (define-key helm-map "\\f" 'helm-scroll-other-window-down)
+    (define-key helm-map "\\b" 'helm-scroll-other-window)
     (define-key helm-map "\\mm" 'helm-toggle-visible-mark)
     (define-key helm-map "\\ma" 'helm-mark-all)
     (define-key helm-map "\\mA" 'helm-unmark-all)

@@ -88,6 +88,10 @@
     (dolist
         (kv
          '(("." evil-execute-in-emacs-state)
+           ("f" evil-scroll-page-down)
+           ("b" evil-scroll-page-up)
+           ("F" scroll-other-window)
+           ("B" scroll-other-window-down)
            ("ww" evil-window-next)
            ("wW" evil-window-prev)
            ("wp" evil-window-mru)
