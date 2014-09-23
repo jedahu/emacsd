@@ -1,5 +1,5 @@
 (req-package dired-x
-  :require (ffap)
+  :demand t
   :init
   (progn
     (global-auto-revert-mode t)
@@ -19,7 +19,8 @@
     (setq-default
      debug-ignored-errors
      (append
-      '("pattern not found")
+      '("pattern not found"
+        "No previous search")
       debug-ignored-errors))))
 
 (provide 'init-jdh-behaviour)
