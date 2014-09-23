@@ -8,18 +8,18 @@
     (setq evil-emacs-state-modes nil)
 
     (evil-define-command evil-delete-buffer-keep-window (buffer &optional bang)
-                         (interactive "<b><!>")
-                         (with-current-buffer (or buffer (current-buffer))
-                                              (when bang
-                                                (set-buffer-modified-p nil)
-                                                (dolist (process (process-list))
-                                                  (when (eq (process-buffer process) (current-buffer))
-                                                    (set-process-query-on-exit-flag process nil))))
-                                              (if (and (fboundp 'server-edit)
-                                                       (boundp 'server-buffer-clients)
-                                                       server-buffer-clients)
-                                                (server-edit)
-                                                (kill-buffer nil))))
+      (interactive "<b><!>")
+      (with-current-buffer (or buffer (current-buffer))
+        (when bang
+          (set-buffer-modified-p nil)
+          (dolist (process (process-list))
+            (when (eq (process-buffer process) (current-buffer))
+              (set-process-query-on-exit-flag process nil))))
+        (if (and (fboundp 'server-edit)
+                 (boundp 'server-buffer-clients)
+                 server-buffer-clients)
+            (server-edit)
+          (kill-buffer nil))))
 
     ;; Files
     ;; (define-key evil-ex-completion-map (kbd "SPC") #'evil-ex-completion)
@@ -35,7 +35,7 @@
     ;; Help
 
     (define-key evil-insert-state-map [remap newline] 'evil-ret-and-indent)
-    (define-key evil-insert-state-map "\C-n" 'completion-at-point)
+    (define-key evil-insert-state-map (kbd "<tab>") 'completion-at-point)
     (define-key evil-normal-state-map [escape] 'keyboard-quit)
     (define-key evil-visual-state-map [escape] 'keyboard-quit)
     (define-key minibuffer-local-map [escape] 'abort-recursive-edit)
@@ -85,6 +85,12 @@
 
     (evil-define-key 'emacs global-map [escape] 'keyboard-quit)
 
+    (defun jdh-show-symbol-info-at-point ()
+      (interactive))
+
+    (defun jdh-show-symbol-type-at-point ()
+      (interactive))
+
     (dolist
         (kv
          '(("." evil-execute-in-emacs-state)
@@ -99,7 +105,9 @@
            ("cn" next-error)
            ("cp" previous-error)
            ("cc" current-error)
-           ("cr" first-error)))
+           ("cr" first-error)
+           ("si" jdh-show-symbol-info-at-point)
+           ("st" jdh-show-symbol-type-at-point)))
       (define-global-leader (first kv) (second kv)))))
 
 (req-package evil-god-state

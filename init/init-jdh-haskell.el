@@ -34,9 +34,14 @@
 ;      nil evil-local-leader-shm-mode-map)))
 
 
+(req-package ghc
+  :defer t
+  :commands (ghc-init ghc-debug ghc-goto-next-error ghc-goto-prev-error
+             ghc-show-info ghc-show-type))
+
 (req-package haskell-mode
   :defer t
-  :require (evil)
+  :commands (haskell-mode)
   :config
   (progn
     (setq-default haskell-indentation-layout-offset 4
@@ -47,7 +52,17 @@
                   haskell-indentation-where-post-offset 2)
 
     (defun jdh-haskell-mode-setup ()
-      (turn-on-haskell-indentation))
+      (turn-on-haskell-indentation)
+      (ghc-init))
+
+    (define-key haskell-mode-map
+      [remap next-error] 'ghc-goto-next-error)
+    (define-key haskell-mode-map
+      [remap previous-error] 'ghc-goto-prev-error)
+    (define-key haskell-mode-map
+      [remap jdh-show-symbol-info-at-point] 'ghc-show-info)
+    (define-key haskell-mode-map
+      [remap jdh-show-symbol-type-at-point] 'ghc-show-type)
 
     (add-hook 'haskell-mode-hook 'jdh-haskell-mode-setup)))
 

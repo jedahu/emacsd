@@ -14,7 +14,7 @@
   :defer t
   :commands vbnet-mode
   :init
-  (add-to-list 'auto-mode-alist '("\\.vb\\$" . vbnet-mode)))
+  (add-to-list 'auto-mode-alist '("\\.vb$" . vbnet-mode)))
 
 (req-package csharp-mode
   :defer t
