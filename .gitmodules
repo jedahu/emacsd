@@ -4,3 +4,6 @@
 [submodule "pkgs/evil-scout"]
 	path = pkgs/evil-scout
 	url = git@github.com:jedahu/evil-scout.git
+[submodule "pkgs/purscheck"]
+	path = pkgs/purscheck
+	url = git@github.com:spion/purscheck.git
