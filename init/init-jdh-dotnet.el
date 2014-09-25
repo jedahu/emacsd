@@ -27,6 +27,8 @@
     (add-hook 'csharp-mode-hook 'jdh-csharp-mode-init t)
     ;;(add-hook 'csharp-mode-hook 'omnisharp-mode)
 
+    (setq-default omnisharp-auto-complete-want-documentation t)
+    
     (setq omnisharp-server-executable-path
           (case (jdh-system-sym)
             ('TMWS107
@@ -82,8 +84,6 @@
 
     (evil-define-key 'normal omnisharp-mode-map
       (kbd ",.") 'omnisharp-show-overloads-at-point)
-
-    (setq omnisharp-auto-complete-want-documentation t)
 
     (defun omnisharp--fix-build-command-if-on-windows (command)
       command)

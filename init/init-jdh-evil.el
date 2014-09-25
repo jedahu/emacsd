@@ -7,6 +7,9 @@
           (append evil-emacs-state-modes evil-motion-state-modes))
     (setq evil-emacs-state-modes nil)
 
+    (setq-default evil-overriding-maps nil
+                  evil-intercept-maps nil)
+
     (evil-define-command evil-delete-buffer-keep-window (buffer &optional bang)
       (interactive "<b><!>")
       (with-current-buffer (or buffer (current-buffer))
