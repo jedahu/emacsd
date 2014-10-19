@@ -2,6 +2,7 @@
   :defer t
   :config
   (progn
+    (add-hook 'focus-out-hook 'evil-normal-state)
     (setq-default
      debug-ignored-errors
      (append

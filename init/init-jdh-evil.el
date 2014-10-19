@@ -94,24 +94,32 @@
     (defun jdh-show-symbol-type-at-point ()
       (interactive))
 
-    (dolist
-        (kv
-         '(("." evil-execute-in-emacs-state)
-           ("f" evil-scroll-page-down)
-           ("b" evil-scroll-page-up)
-           ("F" scroll-other-window)
-           ("B" scroll-other-window-down)
-           ("ww" evil-window-next)
-           ("wW" evil-window-prev)
-           ("wp" evil-window-mru)
-           ("wo" delete-other-windows)
-           ("cn" next-error)
-           ("cp" previous-error)
-           ("cc" current-error)
-           ("cr" first-error)
-           ("si" jdh-show-symbol-info-at-point)
-           ("st" jdh-show-symbol-type-at-point)))
-      (define-global-leader (first kv) (second kv)))))
+    (let
+        ((other-frame-reverse
+          (lambda ()
+            (interactive)
+            (other-frame -1))))
+      (dolist
+          (kv
+           `(("." evil-execute-in-emacs-state)
+             ("f" evil-scroll-page-down)
+             ("b" evil-scroll-page-up)
+             ("F" scroll-other-window)
+             ("B" scroll-other-window-down)
+             ("ww" evil-window-next)
+             ("wW" evil-window-prev)
+             ("wp" evil-window-mru)
+             ("wo" delete-other-windows)
+             ("WW" other-frame)
+             ("Ww" ,other-frame-reverse)
+             ("Wo" delete-other-frames)
+             ("cn" next-error)
+             ("cp" previous-error)
+             ("cc" current-error)
+             ("cr" first-error)
+             ("si" jdh-show-symbol-info-at-point)
+             ("st" jdh-show-symbol-type-at-point)))
+        (define-global-leader (first kv) (second kv))))))
 
 (req-package evil-god-state
   :defer t

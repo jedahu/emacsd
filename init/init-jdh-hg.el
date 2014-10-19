@@ -1,5 +1,5 @@
 (req-package ahg
-  :commands (hg-review hg-revstat ahg-status)
+  :commands (hg-review hg-revstat hg-diff hg-stat ahg-status)
   :require (evil)
   :init
   (progn
