@@ -21,6 +21,9 @@
   :require (omnisharp cc-mode)
   :config
   (progn
+    (setq-default csharp-want-flymake-fixup nil)
+    (defun cheeso-reform-string (limit arg) arg)
+    (defun cheeso-string-trim (arg arg1) arg)
     (defun jdh-csharp-mode-init ()
       (flymake-mode -1))
 
@@ -28,7 +31,7 @@
     ;;(add-hook 'csharp-mode-hook 'omnisharp-mode)
 
     (setq-default omnisharp-auto-complete-want-documentation t)
-    
+
     (setq omnisharp-server-executable-path
           (case (jdh-system-sym)
             ('TMWS107

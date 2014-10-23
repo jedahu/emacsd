@@ -11,7 +11,7 @@
       debug-ignored-errors))))
 
 (req-package jdh-backup
-  :defer t
+  :demand t
   :commands (jdh-backup-buffer-force jdh-backup-save-all)
   :init
   (progn
