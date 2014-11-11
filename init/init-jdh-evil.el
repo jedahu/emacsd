@@ -82,6 +82,8 @@
     (define-key minibuffer-local-map "\\" 'self-insert-command)
     (define-key evil-ex-completion-map "\\" 'self-insert-command)
 
+    (evil-define-key 'insert global-map "\\k" 'evil-insert-digraph)
+
     (evil-define-command current-error ()
       (interactive)
       (next-error 0))

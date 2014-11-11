@@ -18,6 +18,7 @@
     (evil-ex-define-cmd "dired" 'dired-jump)
     (evil-define-key 'normal dired-mode-map (kbd "<RET>") 'dired-find-file)
     (evil-define-key 'normal dired-mode-map "R" 'dired-do-rename)
+    (evil-define-key 'normal dired-mode-map "D" 'dired-do-delete)
     (evil-define-key 'normal dired-mode-map "m" 'dired-mark)
     (evil-define-key 'normal dired-mode-map "F"
       #'(lambda ()
