@@ -1,6 +1,7 @@
 (req-package org
   :defer t
   :require (evil evil-scout evil-rebellion)
+
   :init
   (progn
     (setq-default
@@ -9,6 +10,7 @@
      org-return-follows-link nil
      org-cycle-separator-lines 1)
     (evil-ex-define-cmd "todos" 'org-todo-list))
+
   :config
   (progn
     (defun jdh-org-case-open (n)
@@ -19,6 +21,14 @@
       (end-of-line)
       (org-insert-todo-heading t)
       (evil-insert-state 1))
+
+    (defun jdh-org-clock-echo ()
+      (interactive)
+      (org-clock-remove-overlays)
+      (org-clock-sum)
+      (message (concat "Total file time: "
+                       (org-minutes-to-clocksum-string
+                        org-clock-file-total-minutes))))
 
     (evil-define-operator jdh-org-do-to-lines (beg end f)
       (let ((beg (set-marker (make-marker) beg))
@@ -51,7 +61,9 @@
        '(("cr" org-evaluate-time-range)
          ("ci" org-clock-in)
          ("co" org-clock-out)
+         ("ce" jdh-org-clock-echo)
          ("cd" org-clock-display)
+         ("cD" org-clock-remove-overlays)
          ("it" jdh-org-insert-todo)
          ("tt" org-todo))))))
 

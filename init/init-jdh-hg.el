@@ -45,6 +45,8 @@
       (shell-command "hg diff -r \"max(ancestor(default, '.'))\""
                      "*hg review*")
       (with-current-buffer "*hg review*"
+        (switch-to-buffer (current-buffer))
+        (delete-other-windows)
         (diff-mode)))))
 
 (provide 'init-jdh-hg)

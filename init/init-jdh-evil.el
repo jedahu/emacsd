@@ -48,15 +48,12 @@
     (define-key minibuffer-local-isearch-map [escape] 'abort-recursive-edit)
 
     (define-key evil-motion-state-map "\C-w" nil)
+    (define-key evil-motion-state-map (kbd "<SPC>") nil)
     (dolist (keys (list
                     (kbd "C-w")
                     (kbd "C-a")
                     (kbd "C-k")
-                    (kbd "\\")
-                    [up]
-                    [down]
-                    [right]
-                    [left]))
+                    (kbd "\\")))
       (define-key global-map keys nil)
       (define-key evil-motion-state-map keys nil)
       (define-key evil-insert-state-map keys nil)
@@ -76,7 +73,7 @@
   :config
   (progn
     (setq-default evil-scout-keys-alist
-		  `((leader "<SPC>" ,evil-normal-state-map ,evil-visual-state-map)
+		  `((leader "<SPC>" ,evil-normal-state-map ,evil-visual-state-map ,evil-motion-state-map)
 		    (local-leader "\\" normal visual insert)))
     (evil-define-key 'insert global-map "\\\\" 'self-insert-command)
     (define-key minibuffer-local-map "\\" 'self-insert-command)

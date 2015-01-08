@@ -4,12 +4,13 @@
   (progn
     (setq-default indent-tabs-mode nil)
     (setq-default tab-width 4)
+    (setq-default sentence-end-double-space nil)
 
     (setq-default ispell-dictionary "en_GB")
 
     (setq-default fill-column 80)
 
-    (setq-default whitespace-style '(face trailing lines-tail))
+    (setq-default whitespace-style '(face trailing))
     (global-whitespace-mode 1)
 
     (show-paren-mode 1)
