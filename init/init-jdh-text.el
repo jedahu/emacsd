@@ -10,7 +10,7 @@
 
     (setq-default fill-column 80)
 
-    (setq-default whitespace-style '(face trailing lines-tail))
+    (setq-default whitespace-style '(face trailing))
     (global-whitespace-mode 1)
 
     (show-paren-mode 1)
