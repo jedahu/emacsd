@@ -1,12 +1,17 @@
 (req-package sql
   :defer t
+  :init
+  (progn
+    (add-to-list 'auto-mode-alist '("\\.prc$" . sql-mode)))
   :config
   (progn
     (sql-set-product-feature 'ms :list-all ".find")
     (sql-set-product-feature 'ms :list-table ".explain %s")
     (sql-set-product-feature 'ms :prompt-regexp "^\\w*> ")
-    (sql-set-product-feature 'ms :completion-object 'jdh-sql-ms-completion-object)
-    (sql-set-product-feature 'ms :completion-column 'jdh-sql-ms-completion-object)
+    (sql-set-product-feature
+     'ms :completion-object 'jdh-sql-ms-completion-object)
+    (sql-set-product-feature
+     'ms :completion-column 'jdh-sql-ms-completion-object)
 
     (defun jdh-sql-ms-completion-object (sqlbuf schema)
       (sql-redirect-value
